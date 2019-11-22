@@ -1,0 +1,19 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <b> Hello @User.Identity.Name.Split('@')[0]! </b> You should check in on some of those Lists below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+}
+else
+{
+   
+}
+</ul>

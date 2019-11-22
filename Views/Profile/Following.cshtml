@@ -1,0 +1,16 @@
+@model List<Follower>
+
+
+you are following 
+<hr>
+<br>
+
+    @foreach(var x in Model)
+    {
+       
+        <div class="alert alert-dark" role="alert">
+           @x.FollowName
+         <p>  <a asp-action="Unfollow" asp-controller="Profile" asp-route-name="@x.FollowName">unfollow</a> </p>
+        </div>
+        
+    }

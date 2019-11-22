@@ -1,0 +1,120 @@
+@model Profile
+<div class="video-block section-padding">
+                             <form asp-action="Update" asp-controller="Profile" method="POST" enctype="multipart/form-data">
+
+
+						<div class="main-items">
+							<div class="row justify-content-md-center">
+								<div class="messages text-center col-md-12">
+									Update Your Profile
+									<hr>
+								</div>
+ <input type="hidden" asp-for="Id">
+                                
+								<div class="feedback col-md-10">
+         
+									<div class="email-input">
+										<div class="midemail">							
+											<img src="/files/images/svg/pencil.svg" alt="">								
+											<h6>FullName</h6>
+										</div>
+										<div class="inputs">
+											<input type="text" asp-for="FullName" placeholder="Enter Your Full Name"> 
+										</div>
+									</div>	
+                                    <div class="email-input">
+										<div class="midemail">							
+											<img src="/files/images/svg/pencil.svg" alt="">								
+											<h6>Date or Birth</h6>
+										</div>
+										<div class="inputs">
+											<input type="date" asp-for="DateOfBirth" placeholder="DOB"> 
+										</div>
+									</div>	
+										
+									
+									<div class="email-input">
+												
+												<div class="midemail">
+												<img src="/files/images/svg/upload/image.svg" alt="">
+												<h6>Images</h6>
+												</div>
+													
+												
+												
+												<div class="loga">
+														Gallery Images
+													</div>
+													<div class="imggallery">
+														<img id="blah" src="#" alt="your image" />
+														
+																						
+													</div>
+												<div class="screnshot" id="OpenImgUpload">
+													<input type="file" id="file" onchange="readURL(this);" name="file" value="file" accept="image/*">
+													<label for="file">Choose file</label>
+												<br>
+												<span>Maximum file size 1MB</span>
+												</div>
+												
+											</div>									
+																			
+									<div class="email-input">
+										<div class="midemail">
+										<img src="/files/images/svg/info.svg" alt="">
+										<h6>Contact Information</h6>
+										</div>
+										<div class="inputs">
+											<div class="loga1">
+												Email										
+											</div>											
+											<input type="text"   asp-for="Email" placeholder="Example : johndoe@example.com">
+										</div>
+										<div class="inputs-new">
+											<div class="loga1">
+												Phone 										
+											</div>
+											<input type="text" asp-for="Phone" placeholder="Enter Phone Number">
+										</div>
+									</div>																			
+																		
+									<div class="email-input">
+										<div class="midemail">
+											<img src="/files/images/svg/location.svg" alt="">
+											<h6>Address</h6>
+										</div>
+										<div class="inputs">
+											<input type="text" asp-for="Address" placeholder="e.g. “Jhapa"> 
+										</div>
+										<ul class="radio">												
+											<li class="custom-control custom-radio">
+												<input type="radio" id="customRadio101" name="customRadio" class="custom-control-input">
+												<label class="custom-control-label" for="customRadio101">Pick Coordinates</label>
+											</li>																								
+										</ul>
+										
+									</div>	
+                                    <div class="email-input">
+										<div class="midemail">
+											<img src="/files/images/svg/location.svg" alt="">
+											<h6>Address Line 2(Optional)</h6>
+										</div>
+										<div class="inputs">
+											<input type="text" asp-for="Address2" placeholder="Enter Your Street Address"> 
+										</div>
+                                    </div>										
+																	
+									<div class="sends">
+										<input type="submit" value="Submit Now">
+									</div>																													
+								</div>
+							</div>	
+                          </div>   
+						
+
+					
+													
+							
+					
+               </form> 
+			</div>

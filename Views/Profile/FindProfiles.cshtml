@@ -1,0 +1,73 @@
+@model List<Profile>
+
+<div class="video-block section-padding">
+						<div class="main-items">
+							<div class="row justify-content-md-center">
+								<div class="messages text-center col-md-12">
+									Find Profiles
+									<hr>
+								</div>
+								
+								<div class="feedback col-md-12">
+																										
+									<div class="search-people">
+										<form asp-action="FindProfiles" asp-controller="Profile" method="GET">
+										<input type="search" class="search-people-input" id="search" name="search" placeholder="Search peoples...">
+										
+										<input type="submit" value="Search" class="people-search"/>
+										</form>
+									</div>
+																	
+								</div>	
+																														
+							</div>
+							<div class="my-all-lisitngs">
+								<div class="row">
+									
+									@foreach(var x in Model)
+									{
+									<div class="col-lg-3 col-sm-12">
+										<div class="my-listing-dt-all-follow">
+											<div class=" my-lisiting-picy">
+												<a href="#"><img src="/userimages/@x.ImageUrl" alt=""></a>
+											</div>
+											<a asp-action="UserProfile" asp-controller="Profile" asp-route-id="@x.UserId"><h4>@x.FullName</h4></a>
+											<p> <i class="fas fa-map-marker-alt"></i>@x.Address </p>																								
+											<div class="dashboard-main-dt-follow">
+												<ul>
+													<li>
+														<div class="lisitng-dt2">
+															<ins>@x.Listing</ins>															
+															<span>Listings</span>															
+														</div>
+													</li>
+													<li>
+														<div class="lisitng-dt2">
+															<ins>@x.FollowersCount</ins>															
+															<span>Followers</span>															
+														</div>
+													</li>
+													<li>
+														<div class="lisitng-dt2">
+															<ins></ins>															
+															<span>Following</span>															
+														</div>
+													</li>
+												</ul>
+											</div>
+											<button class="folow-btn" type="button">See Listings</button>
+										</div>
+									</div>
+									}
+																									
+								</div>														
+							</div>
+							<div class="view-spinner">
+								<div class="spinner-border" role="status">
+									<span class="sr-only">Loading...</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

@@ -1,0 +1,165 @@
+@model Profile
+
+@if(Model == null)
+{
+ 
+     
+<div class="alert alert-danger" role="alert">
+ This user's havent created a profile yet 
+</div>
+}
+else
+{
+
+
+
+<div class="video-block section-padding">
+	<div class="main-item">
+		<div class="row">
+		    <div class="col-md-12 px-0">
+				<div class="profile-area-dashboard">
+										
+					<div class=" my-dash-profile">
+					 <img src="/userimages/@Model.ImageUrl" alt="">											
+					</div>
+										<div class="profile-dashbd-dt">
+											<div class="item-title-dashbd">
+												<h4> @Model.FullName </h4>
+												<p><span><i class="fas fa-map-marker-alt"></i></span>@Model.Address</p>
+											</div>																						
+											<div class="dashboard-main-dt">
+												<ul>
+													<li>
+														<div class="lisitng-dtl">
+															<ins> @ViewBag.ListCount</ins>															
+															<span>Listings</span>															
+														</div>
+													</li>
+													<li>
+														<div class="lisitng-dtl">
+															<ins>@ViewBag.c</ins>															
+															<span>Followers</span>															
+														</div>
+													</li>
+													<li>
+														<div class="lisitng-dtl">
+															<ins>@ViewBag.c1</ins>															
+															<span>Following</span>															
+														</div>
+													</li>
+												</ul>
+											</div>
+											<button class="setting-btn">
+												<a asp-action="Follow" asp-controller="Profile" asp-route-userid="@Model.UserId" asp-route-username="@Model.UserName" style="color:White;"> @TempData["c"]</a>
+												</button>
+											<button class="setting-btn">
+											<a asp-action="Follow" asp-controller="Profile"   style="color:White;"> Like</a>
+												</button>
+										</div>										
+									</div>										
+								</div>									
+							</div>
+								
+								<!-- Profile Detail Area End-->
+								<!--Nav Tabs Start -->
+								<div class="row">
+									<div class="dashbd-detail-tabs">
+										<div class="col-xl-12 com-md-12 col-sm-12 px-0">		
+											
+											<!--Tabs Panes Start -->
+											<div class="tab-content">												
+												<div class="tab-pane active" role="tabpanel" id="activity"> 
+													<div class="video-block section-padding">
+														<div class="row lr-row">
+															<div class="col-md-12">
+																
+																<div class=" locatins">
+																	<div class="heading1">
+																		
+																		<h3>
+																			@Model.FullName																		
+																		</h3>
+																		<p>@Model.Date</p>
+																	</div>																	
+																	
+																	<div class="user-reply">
+																		<div class="heading1">
+																			
+																			<h3>
+																				Phone																				
+																			</h3>
+																			
+																		</div>																	
+																		<div class="sub-heading">
+																			@Model.Phone
+																		</div>				
+																	</div>
+																	<div class="user-reply">
+																		<div class="heading1">
+																			
+																			<h3>
+																				Email																				
+																			</h3>
+																			
+																		</div>																	
+																		<div class="sub-heading">
+																		@Model.Email
+																		</div>				
+																	</div>
+																	<div class="user-reply">
+																		<div class="heading1">
+																			
+																			<h3>
+																				Address																			
+																			</h3>
+																			
+																		</div>																	
+																		<div class="sub-heading">
+																			@Model.Address
+																		</div>				
+																	</div>
+																	<div class="user-reply">
+																		<div class="heading1">
+																			
+																			<h3>
+																				Address2																				
+																			</h3>
+																			
+																		</div>																	
+																		<div class="sub-heading">
+																			@Model.Address2
+																		</div>				
+																	</div>
+																	<div class="user-reply">
+																		<div class="heading1">
+																			
+																			<h3>
+																				Member Since																			
+																			</h3>
+																			<p>@Model.Date</p>
+																		</div>																	
+																		<div class="sub-heading">
+																			
+																		</div>				
+																	</div>
+
+
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+	</div>
+	
+</div>
+<div class="alert alert-danger" role="alert">
+  Hello @Model.FullName You have posted @ViewBag.ListCount Listings(s) <span> Click <a asp-controller="Listing" asp-action="MyListings">Me </a> To View </span>!
+</div>
+
+
+
+}											

@@ -1,0 +1,15 @@
+@model List<Follower>
+
+
+your followers
+<hr>
+<br>
+
+    @foreach(var x in Model)
+    {
+       
+        <div class="alert alert-dark" role="alert">
+           @x.UserName
+        </div>
+        
+    }

@@ -1,0 +1,259 @@
+@model Listing
+
+
+				 <!-- Profile Detail Area Start-->
+					<div class="video-block section-padding">
+						<div class="main-items">
+							<div class="row justify-content-md-center">
+								<div class="messages text-center col-md-12">
+									edit your listing
+									<hr>
+								</div>
+                                <div class="col-md-10">
+									<div class="edit-acount">
+								       <a asp-action="Delete" asp-controller="Listing" asp-route-id="@Model.Id" class="edit-link"> ❌Delete</a>
+                                       <br><br>
+								   </div>
+								</div>
+                                
+								<div class="feedback col-md-10">
+                                    
+									
+								<div class="tab-content">
+									<div class="tab-pane active" id="cafebar">
+										
+                                        <form asp-action="Update" asp-controller="Listing" enctype="multipart/form-data">
+											<input type="hidden" asp-for="Id">
+											<div class="email-input">
+												<div class="midemail">							
+													<img src="/files/images/svg/pencil.svg" alt="">								
+													<h6>Title</h6>
+												</div>
+												<div class="inputs">
+													<input type="text" asp-for="Title" placeholder="Name the Listing"> 
+												</div>
+											</div>											
+											<div class="email-input">
+												<div class="midemail">
+													<img src="/files/images/svg/pencil.svg" alt="">
+													<h6>Description</h6>
+												</div>
+												<div class="editors">
+													<ul>
+														<li><i class="fas fa-bold"></i><i class="fas fa-italic"></i></li>
+														<li><i class="fas fa-list-ul"></i><i class="fas fa-list-ol"></i></li>
+														<li><i class="fas fa-link"></i><i class="fas fa-unlink"></i></li>
+													</ul>
+													
+													<div class="clearfix"></div>
+												</div>
+												<div class="inputs">
+													<textarea placeholder="Write feedback here" asp-for="Description"></textarea>
+												</div>
+											</div>
+											<div class="email-input">
+												
+												<div class="midemail">
+												<img src="/files/images/svg/upload/image.svg" alt="">
+												<h6>Images</h6>
+												</div>
+													
+												
+												
+												<div class="loga">
+														Gallery Images
+													</div>
+													<div class="imggallery">
+														<img id="blah" src="#" alt="your image" />
+														
+																						
+													</div>
+												<div class="screnshot" id="OpenImgUpload">
+													<input type="file" id="file" onchange="readURL(this);" name="file"  accept="image/*">
+													<label for="file">Choose file</label>
+												<br>
+												<span>Maximum file size 1MB</span>
+												</div>
+												
+											</div>
+											
+											<div class="email-input">
+												<div class="midemail">
+												<img src="/files/images/svg/info.svg" alt="">
+												<h6>Contact Information</h6>
+												</div>
+												<div class="inputs">
+													<div class="loga1">
+														Email										
+													</div>											
+													<input type="text" asp-for="Email" placeholder="Example : johndoe@example.com">
+												</div>
+												<div class="inputs-new">
+													<div class="loga1">
+														Phone 										
+													</div>
+													<input type="text" asp-for="Phone" placeholder="Enter Phone Number">
+												</div>
+											</div>											
+											<div class="email-input">
+												<div class="midemail">
+													<img src="/files/images/svg/clock.svg" alt="">
+													<h6>Open and Close Timing</h6>
+												</div>																							
+												<div class="placeform">
+													<ul class="check-box">
+														<li class="custom-control custom-checkbox check-right">
+															<input type="checkbox" class="custom-control-input" id="customCheck1">
+															<label class="custom-control-label" for="customCheck1">Monday</label>
+														</li>
+														<li class="custom-control custom-checkbox check-right">
+															<input type="checkbox" class="custom-control-input" id="customCheck2">
+															<label class="custom-control-label" for="customCheck2">Tuesday</label>
+														</li>
+														<li class="custom-control custom-checkbox check-right">
+															<input type="checkbox" class="custom-control-input" id="customCheck3">
+															<label class="custom-control-label" for="customCheck3">Wednesday</label>
+														</li>
+														<li class="custom-control custom-checkbox check-right">
+															<input type="checkbox" class="custom-control-input" id="customCheck4">
+															<label class="custom-control-label" for="customCheck4">Thursday</label>
+														</li>
+														<li class="custom-control custom-checkbox check-right">
+															<input type="checkbox" class="custom-control-input" id="customCheck5">
+															<label class="custom-control-label" for="customCheck5">Friday</label>
+														</li>
+														<li class="custom-control custom-checkbox check-right">
+															<input type="checkbox" class="custom-control-input" id="customCheck6">
+															<label class="custom-control-label" for="customCheck6">Saturday</label>
+														</li>
+														<li class="custom-control custom-checkbox check-right">
+															<input type="checkbox" class="custom-control-input" id="customCheck7">
+															<label class="custom-control-label" for="customCheck7">Sunday</label>
+														</li>
+													</ul>
+													<ul class="radio-check">
+														<li class="custom-control custom-radio check-right">
+															<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+															<label class="custom-control-label" for="customRadio1">Enter Hours</label>
+														</li>
+														<li class="custom-control custom-radio check-right">
+															<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+															<label class="custom-control-label" for="customRadio2">Open All Days</label>
+														</li>
+														<li class="custom-control custom-radio check-right">
+															<input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+															<label class="custom-control-label" for="customRadio3">Close All Days</label>
+														</li>
+													</ul>
+													<div class="work-input pm-20-bottom">											
+														<div class="working-inputs ps-right">
+															<div class="sel sel--superman">
+																<select asp-for="TimeFrom" id="select-superpower">
+																	<option value="0">From</option>
+																	<option value="1">7.00 AM</option>
+																	<option value="2">8.00 AM</option>
+																	<option value="3">9.00 AM</option>
+																	<option value="4">10.00 AM</option>
+																	<option value="5">11.00 AM</option>
+																</select>
+															</div>													
+														</div>
+														<div class="working-inputs ps-left">
+															<div class="sel sel--superman">
+																<select asp-for="TimeTo" id="select-superpower1">
+																	<option value="0">To</option>
+																	<option value="1">7.00 PM</option>
+																	<option value="2">8.00 PM</option>															
+																	<option value="3">9.00 PM</option>															
+																	<option value="4">10.00 PM</option>															
+																	<option value="5">11.00 PM</option>															
+																	<option value="6">12.00 PM</option>															
+																</select>
+															</div>													
+														</div>
+													</div>
+													
+												</div>
+																							
+											</div>
+																				
+											<div class="email-input">
+												<div class="midemail">
+													<img src="/files/http://gambolthemes.net/brexit-white/images/svg/location+.svg" alt="">
+													<h6>Location</h6>
+												</div>
+												<div class="inputs">
+													<input type="text" asp-for="Location" placeholder="e.g. “India"> 
+												</div>
+												<ul class="radio">												
+													<li class="custom-control custom-radio">
+														<input type="radio" id="customRadio101" name="customRadio" class="custom-control-input">
+														<label class="custom-control-label" for="customRadio101">Pick Coordinates</label>
+													</li>																								
+												</ul>
+												<div class="inputs">
+													<div class="sel sel--superman">
+														<select name="select-superpower" asp-for="Location" id="select-superpower3">
+															<option value="0">Region (optional)</option>
+															<option value="1">Delhi</option>
+															<option value="2">Mumbai</option>
+															<option value="3">Chandigrah</option>
+															<option value="4">Goa</option>
+															<option value="5">Punjab</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											
+											<div class="email-input searched">
+												<div class="midemail">
+													<img src="/files/images/svg/tag.svg" alt="">
+													<h6>Tags</h6>
+												</div>
+												<div class="inputs">
+													<input type="text" name="name" placeholder="Insert tags separated by commas Ex. #place, #love">
+													<button type="submit">
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="15" height="15" class="delete-icon" viewBox="0 0 15 15"> 
+															<path d="M11.462,10.450 L14.749,13.736 C15.028,14.016 15.028,14.469 14.749,14.748 C14.470,15.027 14.017,15.027 13.738,14.748 L10.451,11.461 C9.350,12.341 7.953,12.868 6.434,12.868 C2.880,12.868 -0.001,9.987 -0.001,6.433 C-0.001,2.879 2.880,-0.002 6.434,-0.002 C9.988,-0.002 12.869,2.879 12.869,6.433 C12.869,7.952 12.343,9.348 11.462,10.450 L11.462,10.450 ZM6.434,11.438 C9.198,11.438 11.439,9.197 11.439,6.433 C11.439,3.668 9.198,1.428 6.434,1.428 C3.670,1.428 1.429,3.668 1.429,6.433 C1.429,9.197 3.670,11.438 6.434,11.438 Z"></path>
+														</svg>
+													</button>
+												</div>
+											</div>
+											<div class="email-input searched">
+												<div class="midemail">
+													<img src="/files/images/svg/tag.svg" alt="">
+													<h6>Price</h6>
+												</div>
+												<div class="inputs">
+													<input type="text" asp-for="Price" placeholder="Enter your Price">
+												</div>
+												</div>
+											
+											
+											<div class="sends">
+												<input type="submit" value="Submit Now">
+											</div>
+                                            </form>																					
+									</div>
+								</div>
+								</div>
+                                </div>
+
+
+
+								<script>
+									function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+	</script>
