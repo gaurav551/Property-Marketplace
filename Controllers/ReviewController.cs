@@ -43,5 +43,26 @@ namespace Nepalists.Controllers
           return RedirectToAction ("Description", "Listing", new {id = ListId});
        
         }
+        [Route("api/[controller]")]
+
+        public IActionResult Remove(int id, int listid)
+        {
+           var user = _userManager.GetUserName(HttpContext.User);
+          
+           
+              var a = _context.Reviews.FirstOrDefault(x=>x.Id==id);
+               
+           if (a.UserName.Equals(user))
+           {
+              _context.Reviews.Remove(a);
+              _context.SaveChanges();
+              return RedirectToAction("Description", "Listing", new{id = listid});
+           }
+           else
+           {
+               return NoContent();
+           }
+           
+        }
     }
 }

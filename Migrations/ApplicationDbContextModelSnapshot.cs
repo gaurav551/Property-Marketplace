@@ -14,24 +14,21 @@ namespace Nepalists.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.0")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("longtext");
+                        .IsConcurrencyToken();
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -46,18 +43,14 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("longtext");
+                    b.Property<string>("ClaimType");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext");
+                    b.Property<string>("ClaimValue");
 
                     b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -69,53 +62,39 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+                    b.Property<int>("AccessFailedCount");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("longtext");
+                        .IsConcurrencyToken();
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                    b.Property<bool>("EmailConfirmed");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                    b.Property<bool>("LockoutEnabled");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetime(6)");
+                    b.Property<DateTimeOffset?>("LockoutEnd");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("longtext");
+                    b.Property<string>("PasswordHash");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("longtext");
+                    b.Property<string>("PhoneNumber");
 
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                    b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("longtext");
+                    b.Property<string>("SecurityStamp");
 
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+                    b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("varchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -133,18 +112,14 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("longtext");
+                    b.Property<string>("ClaimType");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext");
+                    b.Property<string>("ClaimValue");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -156,19 +131,15 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("longtext");
+                    b.Property<string>("ProviderDisplayName");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .IsRequired();
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -179,11 +150,9 @@ namespace Nepalists.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<string>("UserId");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<string>("RoleId");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -194,19 +163,15 @@ namespace Nepalists.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
+                    b.Property<string>("UserId");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(128)")
                         .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(128)")
                         .HasMaxLength(128);
 
-                    b.Property<string>("Value")
-                        .HasColumnType("longtext");
+                    b.Property<string>("Value");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -216,20 +181,15 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Nepalists.Models.Follower", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("FollowId")
-                        .HasColumnType("longtext");
+                    b.Property<string>("FollowId");
 
-                    b.Property<string>("FollowName")
-                        .HasColumnType("longtext");
+                    b.Property<string>("FollowName");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("longtext");
+                    b.Property<string>("UserId");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("longtext");
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -239,54 +199,40 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Nepalists.Models.Listing", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Category");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
                     b.Property<string>("Images")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
-                    b.Property<DateTime>("ListedOn")
-                        .HasColumnType("datetime(6)");
+                    b.Property<DateTime>("ListedOn");
 
                     b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Location2")
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
                     b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
-                    b.Property<string>("PostedBy")
-                        .HasColumnType("longtext");
+                    b.Property<string>("PostedBy");
 
                     b.Property<string>("Price")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
-                    b.Property<string>("TimeFrom")
-                        .HasColumnType("longtext");
+                    b.Property<string>("TimeFrom");
 
-                    b.Property<string>("TimeTo")
-                        .HasColumnType("longtext");
+                    b.Property<string>("TimeTo");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("longtext");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -296,49 +242,36 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Nepalists.Models.Profile", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
-                    b.Property<string>("Address2")
-                        .HasColumnType("longtext");
+                    b.Property<string>("Address2");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime(6)");
+                    b.Property<DateTime>("Date");
 
                     b.Property<string>("DateOfBirth")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
-                    b.Property<int>("FollowersCount")
-                        .HasColumnType("int");
+                    b.Property<int>("FollowersCount");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("longtext");
+                    b.Property<string>("ImageUrl");
 
-                    b.Property<int>("Listing")
-                        .HasColumnType("int");
+                    b.Property<int>("Listing");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .IsRequired();
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("longtext");
+                    b.Property<string>("UserId");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("longtext");
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -348,26 +281,19 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Nepalists.Models.Review", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime(6)");
+                    b.Property<DateTime>("Date");
 
-                    b.Property<string>("FullName")
-                        .HasColumnType("longtext");
+                    b.Property<string>("FullName");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("longtext");
+                    b.Property<string>("Image");
 
-                    b.Property<int>("ListId")
-                        .HasColumnType("int");
+                    b.Property<int>("ListId");
 
-                    b.Property<string>("Text")
-                        .HasColumnType("longtext");
+                    b.Property<string>("Text");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("longtext");
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -377,14 +303,11 @@ namespace Nepalists.Migrations
             modelBuilder.Entity("Nepalists.Models.Saved", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ListId")
-                        .HasColumnType("int");
+                    b.Property<int>("ListId");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("longtext");
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -393,53 +316,47 @@ namespace Nepalists.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

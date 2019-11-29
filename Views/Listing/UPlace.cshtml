@@ -29,25 +29,25 @@
 								<div class="feedback col-md-10">
 									<ul class="nav nav-tabs">
 										<li>
-											<a class="active" href="upload_places_listing.html#cafebar" data-toggle="tab">Cafe's &amp Bar</a>
+											<a class="active" href="#" data-toggle="tab">Cafe's &amp Bar</a>
 										</li>
 										<li>
-											<a href="upload_places_listing.html#resto-dhaba" data-toggle="tab">Restaurant &amp Dhaba</a>
+											<a href="#" data-toggle="tab">Restaurant &amp Dhaba</a>
 										</li>
 										<li>
-											<a href="upload_places_listing.html#cinema" data-toggle="tab">Cinema</a>
+											<a href="#" data-toggle="tab">Cinema</a>
 										</li>
 										<li>
-											<a href="upload_places_listing.html#hotel" data-toggle="tab">Hotel</a>
+											<a href="#" data-toggle="tab">Hotel</a>
 										</li>
 										<li>
-											<a href="upload_places_listing.html#historical" data-toggle="tab">Art &amp Historical</a>
+											<a href="#" data-toggle="tab">Art &amp Historical</a>
 										</li>
 										<li>
-											<a href="upload_places_listing.html#hospital" data-toggle="tab">Hospital</a>
+											<a href="#" data-toggle="tab">Hospital</a>
 										</li>
 										<li>
-											<a href="upload_places_listing.html#shop" data-toggle="tab">Shop</a>
+											<a href="#" data-toggle="tab">Shop</a>
 										</li>
 									</ul>
 									
@@ -56,7 +56,7 @@
 										
                                         <form asp-action="UploadPlace" asp-controller="Listing" enctype="multipart/form-data">
 											<input type="hidden" asp-for="Id">
-											<input type="hidden" asp-for="Location2" value="@ViewBag.Cat">
+											<input type="hidden" asp-for="Category" value="@ViewBag.Cat">
 											
                                              <span asp-validation-for="Title" class="text-danger"></span>
 											<div class="email-input">
@@ -103,7 +103,7 @@
 														Gallery Images
 													</div>
 													<div class="imggallery">
-														<img id="blah" src="#" alt="your image" />
+														<img id="blah" src="#" width="100%" height="100%"alt="your image" />
 														
 																						
 													</div>

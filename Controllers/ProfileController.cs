@@ -1,10 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Nepalists.Models;
 using Nepalists.Data;
@@ -15,6 +10,7 @@ using Nepalists.Repository;
 
 namespace Nepalists.Controllers
 {
+    [Authorize]
     public class ProfileController : BaseController
     {
         private readonly IProfileRepository _profileRepository;
@@ -37,27 +33,27 @@ namespace Nepalists.Controllers
             _context = context;
 
         }
-        // public ProfileController(string deps = _userManager.GetUserName(HttpContext.User))
+        // public ProfileController(string deps = GetUserName(_userManager))
         // {
         //       userId = deps;
         // }
         // public class AppUser()
         // {
-        //     return _userManager.GetUserName(HttpContext.User);
+        //     return GetUserName(_userManager);
         // }
 
-        // public string ae = _userManager.GetUserName(HttpContext.User);
+        // public string ae = GetUserName(_userManager);
 
         public IActionResult Index()
         {
             // var profile = _profileRepository.GetAll().OrderByDescending(x=>x.Id);
-            var user = _userManager.GetUserName(HttpContext.User);
-            var prds = _profileRepository.GetSingle(x => x.UserName.Equals(user));
+            var user = GetUserName(_userManager);
+            var profile = _profileRepository.GetSingle(x => x.UserName.Equals(user));
 
             var listing = _context.Listings.Where(x => x.PostedBy.Equals(user)).ToList();
             ViewBag.count = listing.Count;
             // ViewBag.Listings = listing;
-            var id = _userManager.GetUserId(HttpContext.User);
+            var id = GetUserId(_userManager);
             var followers = _followerRepository.GetBy(x => x.FollowId.Equals(id));
             var following = _followerRepository.GetBy(x => x.UserId.Equals(id));
             ViewBag.c = followers.Count();
@@ -65,7 +61,7 @@ namespace Nepalists.Controllers
 
 
 
-            return View(prds);
+            return View(profile);
         }
 
 
@@ -80,9 +76,9 @@ namespace Nepalists.Controllers
 
         public IActionResult Create(Profile profile, IFormFile file)
         {
-            profile.UserName = _userManager.GetUserName(HttpContext.User);
+            profile.UserName = GetUserName(_userManager);
 
-            profile.UserId = _userManager.GetUserId(HttpContext.User);
+            profile.UserId = GetUserId(_userManager);
 
             profile.ImageUrl = UploadFile2(file);
 
@@ -117,9 +113,9 @@ namespace Nepalists.Controllers
 
         public IActionResult Update(Profile profile, IFormFile file)
         {
-            profile.UserName = _userManager.GetUserName(HttpContext.User);
+            profile.UserName = GetUserName(_userManager);
 
-            profile.UserId = _userManager.GetUserId(HttpContext.User);
+            profile.UserId = GetUserId(_userManager);
 
             profile.ImageUrl = UploadFile2(file);
 
@@ -160,7 +156,7 @@ namespace Nepalists.Controllers
             var s = _profileRepository.GetSingle(x => x.UserId.Equals(id));
             ViewBag.c = _followerRepository.GetBy(x => x.FollowId.Equals(id)).Count();
             var following = _followerRepository.GetBy(x => x.UserId.Equals(id));
-            var k = _userManager.GetUserId(HttpContext.User);
+            var k = GetUserId(_userManager);
 
             ViewBag.c1 = following.Count();
 
@@ -182,10 +178,10 @@ namespace Nepalists.Controllers
 
         public IActionResult Follow(string userid, string username)
         {
-            var k = _userManager.GetUserId(HttpContext.User);
+            var k = GetUserId(_userManager);
             var follow = new Follower();
             follow.UserId = k;
-            follow.UserName = _userManager.GetUserName(HttpContext.User);
+            follow.UserName = GetUserName(_userManager);
             follow.FollowId = userid;
             follow.FollowName = username;
 
@@ -214,7 +210,7 @@ namespace Nepalists.Controllers
         }
         public IActionResult Unfollow(string name)
         {
-            var user = _userManager.GetUserName(HttpContext.User);
+            var user = GetUserName(_userManager);
             // var delete = _followerRepository.GetSingle(x=>x.UserName.Equals(user) && x.FollowName.Equals(name));
             _followerRepository.Remove(x => x.UserName.Equals(user) && x.FollowName.Equals(name));
             return RedirectToAction(nameof(Following));
@@ -226,7 +222,7 @@ namespace Nepalists.Controllers
         }
         public IActionResult Following()
         {
-            var userid = _userManager.GetUserId(HttpContext.User);
+            var userid = GetUserId(_userManager);
             return View(_followerRepository.GetBy(x => x.UserId.Equals(userid)));
         }
 

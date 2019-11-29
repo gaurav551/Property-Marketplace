@@ -1,11 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
-
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Nepalists.Models;
@@ -16,7 +11,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Nepalists.Controllers
 {
-    [Authorize]
+  // [Route("api/[controller]")]
+
     public class ListingController : BaseController
 
     {
@@ -99,13 +95,14 @@ namespace Nepalists.Controllers
 
             return RedirectToAction("Index");
         }
+       // [HttpGet("{id}")]
         public IActionResult Description(int id)
         {
             var description = _context.Listings.FirstOrDefault(x => x.Id == id);
             var image = _context.Profiles.FirstOrDefault(x => x.UserId.Equals(description.UserId));
             ViewBag.Image = image.ImageUrl;
             ViewBag.reviews = _context.Reviews.Where(x => x.ListId == id).ToList();
-            return View(description);
+            return Ok(description);
         }
         public IActionResult SaveListing(int id)
         {

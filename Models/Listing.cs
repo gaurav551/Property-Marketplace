@@ -35,10 +35,10 @@ namespace Nepalists.Models
          public string TimeTo { get; set; }
         [Required]
         public string Location { get; set; }
-        public string Location2 { get; set; }
+        public string Category { get; set; }
 
         [Required(ErrorMessage="Price is Required")]
-        [Range(100, 500000,ErrorMessage="Price must be in number and between 100 to 500,000")]
+        [Range(100, int.MaxValue,ErrorMessage="Price must be in number &&  > 100")]
 
         public string Price { get; set; }
         // public Saved Saved {get;set;}
